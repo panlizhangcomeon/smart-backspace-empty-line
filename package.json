@@ -2,7 +2,7 @@
   "name": "smart-backspace-empty-line",
   "displayName": "Smart Backspace Empty Line",
   "description": "Smart backspace for empty lines - like PhpStorm/IntelliJ behavior",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "plz",
   "author": {
     "name": "plz"
