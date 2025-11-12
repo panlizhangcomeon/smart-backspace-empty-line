@@ -1,8 +1,8 @@
 {
   "name": "smart-backspace-empty-line",
-  "displayName": "Smart Backspace Empty Line",
-  "description": "Smart backspace for empty lines - like PhpStorm/IntelliJ behavior",
-  "version": "0.0.4",
+  "displayName": "Smart Editing Tools",
+  "description": "Smart backspace for empty lines and auto-save - PhpStorm/IntelliJ style",
+  "version": "0.0.5",
   "publisher": "plz",
   "author": {
     "name": "plz"
@@ -20,11 +20,17 @@
   ],
   "keywords": [
     "smart",
+    "editing",
+    "tools",
     "backspace",
     "empty",
     "line",
+    "autosave",
+    "auto-save",
     "productivity",
     "editor",
+    "phpstorm",
+    "intellij",
     "cursor",
     "vscode"
   ],
@@ -37,7 +43,11 @@
     "commands": [
       {
         "command": "smartBackspace.smartBackspace",
-        "title": "Smart Backspace"
+        "title": "Smart Editing Tools: Smart Backspace"
+      },
+      {
+        "command": "smartBackspace.toggleAutoSave",
+        "title": "Smart Editing Tools: 切换自动保存"
       }
     ],
     "keybindings": [
@@ -46,7 +56,29 @@
         "key": "backspace",
         "when": "editorTextFocus && !editorReadonly"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Smart Editing Tools",
+      "properties": {
+        "smartBackspace.autoSave.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用自动保存功能（类似PHPStorm的autoSave）"
+        },
+        "smartBackspace.autoSave.delay": {
+          "type": "number",
+          "default": 500,
+          "minimum": 100,
+          "maximum": 5000,
+          "description": "自动保存延迟时间（毫秒），在停止输入后多久触发保存"
+        },
+        "smartBackspace.autoSave.showNotification": {
+          "type": "boolean",
+          "default": false,
+          "description": "保存时在状态栏显示通知"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

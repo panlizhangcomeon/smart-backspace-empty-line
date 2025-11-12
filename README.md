@@ -1,10 +1,10 @@
-# Smart Backspace Empty Line
+# Smart Editing Tools
 
-[![Version](https://img.shields.io/badge/version-0.0.3-blue.svg)](https://marketplace.visualstudio.com/items?itemName=plz.smart-backspace-empty-line)
+[![Version](https://img.shields.io/badge/version-0.0.5-blue.svg)](https://marketplace.visualstudio.com/items?itemName=plz.smart-backspace-empty-line)
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.80+-green.svg)](https://code.visualstudio.com/)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-智能退格扩展，为VS Code和Cursor提供类似PhpStorm/IntelliJ的空行智能删除功能。
+智能编辑工具扩展，为VS Code和Cursor提供类似PhpStorm/IntelliJ的智能退格和自动保存功能。
 
 ## ✨ 功能特性
 
@@ -12,6 +12,12 @@
 - **单键操作**：按一次退格键直接删除空白行，无需双击
 - **智能定位**：根据前一行内容自动选择最佳光标位置
 - **保持结构**：自动保持代码的缩进层次结构
+
+### 💾 自动保存（新功能）
+- **PHPStorm风格**：文件改动后自动保存，无需手动Ctrl+S
+- **防抖设计**：停止输入后延迟触发，避免频繁保存
+- **状态栏显示**：实时显示自动保存状态
+- **一键切换**：点击状态栏图标即可启用/禁用
 
 ### 🎯 智能行为
 - **空白行前是代码**：删除空白行，光标定位到上一行末尾
@@ -65,7 +71,7 @@ function example() {
 1. 打开VS Code或Cursor
 2. 按 `Cmd+Shift+P` 打开命令面板
 3. 输入 "Extensions: Install Extensions"
-4. 搜索 "Smart Backspace Empty Line"
+4. 搜索 "Smart Editing Tools"
 5. 点击安装
 
 ### 方法2：VSIX文件安装
@@ -112,10 +118,30 @@ npm run compile
 - 以及其他支持空行的文件类型
 
 ### 配置选项
+
+#### 智能退格配置
 扩展基于内置逻辑工作，无需额外配置：
 - 自动检测空白行（仅包含空格、制表符或完全为空）
 - 智能分析前一行内容
 - 精准计算缩进级别（支持空格和制表符）
+
+#### 自动保存配置
+可以通过VS Code/Cursor的设置进行配置：
+
+| 配置项 | 说明 | 默认值 |
+|--------|------|--------|
+| `smartBackspace.autoSave.enabled` | 启用/禁用自动保存功能 | `true` |
+| `smartBackspace.autoSave.delay` | 停止输入后延迟保存时间（毫秒） | `500` |
+| `smartBackspace.autoSave.showNotification` | 保存时在状态栏显示通知 | `false` |
+
+**配置方式：**
+1. 打开设置：`Cmd+,`（Mac）或 `Ctrl+,`（Windows/Linux）
+2. 搜索 "Smart Editing Tools"
+3. 调整相关配置
+
+**快捷切换：**
+- 点击状态栏右下角的 "🔄 自动保存" 图标
+- 或使用命令面板：`Cmd+Shift+P` → 输入 "Smart Editing Tools: 切换自动保存"
 
 ## 🔧 开发信息
 
@@ -160,7 +186,18 @@ smart-backspace-empty-line/
 
 ## 📋 更新日志
 
-### 0.0.3 (当前版本)
+### 0.0.5 (当前版本)
+- ✨ 新增自动保存功能，类似PHPStorm的autoSave
+- ✅ 文件改动后自动触发保存，无需手动Ctrl+S
+- ✅ 添加防抖机制，可配置延迟时间（默认500ms）
+- ✅ 状态栏显示自动保存状态
+- ✅ 支持一键切换启用/禁用自动保存
+- ✅ 添加完整的配置选项
+
+### 0.0.4
+- ✅ 代码优化和性能改进
+
+### 0.0.3
 - ✅ 修复Cursor扩展市场兼容性问题
 - ✅ 添加正确的cursor引擎配置 (">=0.1.0")
 - ✅ 优化关键词包含"cursor"以提高搜索发现性
